@@ -56,7 +56,7 @@ function renderStyles() {
         user-select: none;
         position: absolute;
         left: 0;
-        display: inline-flex
+        display: inline-flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
