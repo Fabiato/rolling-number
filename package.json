@@ -1,6 +1,6 @@
 {
   "name": "@layflags/rolling-number",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "<layflags-rolling-number> is an easy-to-use inline Web Component that shows a nice rolling digit animation and automatically adapts to the surrounding font style",
   "main": "rolling-number.js",
   "module": "rolling-number.js",
