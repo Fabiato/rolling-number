@@ -46,6 +46,7 @@ function renderStyles() {
         overflow: hidden;
         display: inline-flex;
         position: relative;
+        text-align: center;
       }
       .value {
         color: transparent;
