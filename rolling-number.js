@@ -47,6 +47,7 @@ function renderStyles() {
         display: inline-flex;
         position: relative;
         text-align: center;
+        justify-content: center;
       }
       .value {
         color: transparent;
