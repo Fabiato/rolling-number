@@ -26,7 +26,7 @@ function html(strings, ...args) {
 function toDigits(num, size = 0) {
     const result = Number.isNaN(num) ? [] : num.toString().split("");
     const padSize = Math.max(0, size - result.length);
-    return [...Array(padSize).fill("\u200B"), ...result];
+    return [...Array(padSize).fill(" "), ...result];
 }
 
 function toSize(num) {
@@ -48,6 +48,7 @@ function renderStyles() {
                 position: relative;
                 text-align: center;
                 justify-content: center;
+                transition: width 0.2s ease;
             }
             .value {
                 color: transparent;
@@ -67,6 +68,7 @@ function renderStyles() {
                 position: absolute;
                 bottom: -10%;
                 left: 0;
+                right: 0;
             }
             [data-value=" "] .scale { transform: translatey(10%); }
             [data-value="0"] .scale { transform: translatey(0); }
@@ -80,6 +82,7 @@ function renderStyles() {
             [data-value="8"] .scale { transform: translatey(-80%); }
             [data-value="9"] .scale { transform: translatey(-90%); }
             [data-value="-"] .scale { transform: translatey(-100%); }
+            [data-value=" "], [data-value="-"] { width: 0.9ch; }
         </style>
     `;
 }
