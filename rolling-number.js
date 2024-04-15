@@ -48,7 +48,6 @@ function renderStyles() {
                 position: relative;
                 text-align: center;
                 justify-content: center;
-                border:1px solid blue;
             }
             .value {
                 color: transparent;
@@ -63,10 +62,6 @@ function renderStyles() {
                 justify-content: center;
                 flex-direction: column;
                 transition: transform var(--roll-duration);
-                border:1px solid red;
-            }
-            .scale span {
-                border:1px solid black;
             }
             .scale span:last-child { /* the minus (-) */
                 position: absolute;
