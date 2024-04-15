@@ -45,6 +45,7 @@ Customize roll duration
 - [x] Fixed inline css typo
 - [x] Fixed inline css so other non-monospaced fonts are nicely aligned in each digits column
 - [x] Add an observer wich will initiate the animation only when it's in view
+- [x] Reset the element each time it's out of view
 - [ ] ...
 
 [![my github badge](https://img.shields.io/badge/hanspeleman-000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/hanspeleman) ![NPM Version](https://img.shields.io/npm/v/%40hanspeleman%2Frolling-number?style=for-the-badge&include_prereleases=&sort=semver&color=black) [![License](https://img.shields.io/badge/License-MIT-black?style=for-the-badge)](#license)

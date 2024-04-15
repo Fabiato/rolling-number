@@ -132,10 +132,10 @@ function render($wrapper, nextState, prevState) {
     }
 }
 
-function observeElementInView(rollingNumberElement, onEnterCallback) {
+function observeElementInView(rollingNumberElement, onEnterCallback, onExitCallback) {
     const observerThreshold = {
-        enter: 0.8,
-        exit: 0.2
+        enter: 0.5,
+        exit: 1
     }
 
     if ( !onEnterCallback ) return;
@@ -145,6 +145,11 @@ function observeElementInView(rollingNumberElement, onEnterCallback) {
             if (entry.isIntersecting && entry.intersectionRatio >= observerThreshold.enter) {
                 if (onEnterCallback) {
                     onEnterCallback(entry.target);
+                }
+            }
+            if (!entry.isIntersecting && entry.intersectionRatio <= observerThreshold.exit && entry.intersectionRatio > 0) {
+                if (onExitCallback) {
+                    onExitCallback(entry.target);
                 }
             }
         });
@@ -181,6 +186,11 @@ class RollingNumber extends HTMLElement {
                 this.state = nextState;
             }
         },
+        resetValue() {
+            const state = { ...this.state, value: 0 };
+            render(this.$wrapper, state, this.state);
+            this.state = state;
+        }
     };
     constructor() {
         super();
@@ -208,6 +218,9 @@ class RollingNumber extends HTMLElement {
                 this,
                 () => {
                    this[INTERNAL].update({ value });
+                },
+                () => {
+                   this[INTERNAL].resetValue();
                 }
             );
         }
