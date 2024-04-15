@@ -4,6 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>&lt;layflags-rolling-number&gt; - Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
       * {
         box-sizing: border-box;
@@ -14,7 +17,7 @@
       }
       body {
         color: black;
-        font-family: monospace;
+        font-family: "Poppins", sans-serif;
         margin: 0;
         padding: 0;
       }
@@ -104,54 +107,54 @@
   </head>
   <body>
     <main>
-      <a
-        href="https://github.com/layflags/rolling-number"
-        title="Show project on GitHub"
-        style="float: right"
-        ><img src="./github.svg" width="32" height="32" alt="GitHub Logo"
-      /></a>
-      <h1>&lt;layflags-rolling-number&gt;<br /><span>Demo</span></h1>
-      <p>
-        &lt;layflags-rolling-number&gt; is an easy-to-use inline Web Component
-        that shows a nice rolling digit animation and automatically adapts to
-        the surrounding font style (family, color, size, etc.).
-      </p>
+        <a
+            href="https://github.com/layflags/rolling-number"
+            title="Show project on GitHub"
+            style="float: right"
+            ><img src="./github.svg" width="32" height="32" alt="GitHub Logo"
+        /></a>
+        <h1>&lt;layflags-rolling-number&gt;<br /><span>Demo</span></h1>
+        <p>
+            &lt;layflags-rolling-number&gt; is an easy-to-use inline Web Component
+            that shows a nice rolling digit animation and automatically adapts to
+            the surrounding font style (family, color, size, etc.).
+        </p>
 
-      <h2>Playground</h2>
-      <form id="form">
-        <input type="number" name="number" value="123" size="6" />
-        <button type="button" id="randomize">rnd</button>
-        <button type="submit">set</button>
-      </form>
+        <h2>Playground</h2>
+        <form id="form">
+            <input type="number" name="number" value="123" size="6" />
+            <button type="button" id="randomize">rnd</button>
+            <button type="submit">set</button>
+        </form>
 
-      <div class="output">
-        <layflags-rolling-number class="rolling" style="--roll-duration: 750ms"
-          >123</layflags-rolling-number
-        >°C
-      </div>
+        <div class="output">
+            <rolling-number class="rolling" style="--roll-duration: 750ms"
+            >456</rolling-number
+            >°C
+        </div>
 
-      <p style="font-family: serif; font-style: italic">
-        It's around
-        <layflags-rolling-number class="rolling" style="--roll-duration: 1500ms"
-          >123</layflags-rolling-number
-        >°C at the moment!
-      </p>
+        <p style="font-family: serif; font-style: italic">
+            It's around
+            <rolling-number class="rolling" style="--roll-duration: 1500ms"
+            >123</rolling-number
+            >°C at the moment!
+        </p>
 
-      <p></p>
+        <p></p>
 
-      <h2>Usage</h2>
-      <p>
+        <h2>Usage</h2>
+        <p>
         <textarea readonly rows="12">
-<script type="module" src="https://unpkg.com/@layflags/rolling-number@1.0.0/rolling-number.js"></script>
+            <script type="module" src="https://unpkg.com/@layflags/rolling-number@1.0.0/rolling-number.js"></script>
 
-<!-- value by fallback -->
-<layflags-rolling-number>123</layflags-rolling-number>
+            <!-- value by fallback -->
+            <layflags-rolling-number>123</layflags-rolling-number>
 
-<!-- value w/o fallback -->
-<layflags-rolling-number value="123"></layflags-rolling-number>
+            <!-- value w/o fallback -->
+            <layflags-rolling-number value="123"></layflags-rolling-number>
 
-<!-- customize roll duration -->
-<layflags-rolling-number style="--roll-duration:750ms">123</layflags-rolling-number>
+            <!-- customize roll duration -->
+            <layflags-rolling-number style="--roll-duration:750ms">123</layflags-rolling-number>
       </textarea
         >
       </p>
@@ -164,6 +167,16 @@
           <a href="https://www.layfla.gs" target="_blank">layflags</a></small
         >
       </p>
+
+      <div class="frame" style="padding-top: 75vh;padding-bottom: 20vh;">
+
+        <div class="output output--custom">
+            <rolling-number class="rolling" style="--roll-duration: 750ms"
+            >256</rolling-number
+            >°C
+        </div>
+
+      </div>
     </main>
 
     <script>
