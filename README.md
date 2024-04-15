@@ -47,5 +47,5 @@ Customize roll duration
 - [x] Add an observer wich will initiate the animation only when it's in view
 - [ ] ...
 
-[![my github badge](https://img.shields.io/badge/hanspeleman-000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/hanspeleman) [![GitHub release](https://img.shields.io/github/release/hanspeleman/rolling-number?style=for-the-badge&include_prereleases=&sort=semver&color=black)](https://github.com/hanspeleman/rolling-number/releases/) [![License](https://img.shields.io/badge/License-MIT-black?style=for-the-badge)](#license)
+[![my github badge](https://img.shields.io/badge/hanspeleman-000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/hanspeleman) ![NPM Version](https://img.shields.io/npm/v/%40hanspeleman%2Frolling-number?style=for-the-badge&include_prereleases=&sort=semver&color=black) [![License](https://img.shields.io/badge/License-MIT-black?style=for-the-badge)](#license)
 This repository is based on [@layflags/rolling-number](https://github.com/layflags/rolling-number).
