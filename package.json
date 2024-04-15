@@ -14,10 +14,13 @@
     "keywords": [
         "rolling",
         "number",
+        "numbers",
         "web component",
         "layflags",
         "digits",
-        "animation"
+        "animation",
+        "animating",
+        "animated"
     ],
     "author": "hanspeleman",
     "repository": "github:hanspeleman/rolling-number",
