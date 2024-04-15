@@ -1,12 +1,14 @@
-# &lt;layflags-rolling-number&gt;
-
-This easy-to-use inline Web Component shows a nice rolling digit animation and automatically adapts to the surrounding font style.
+# rolling-number
+**&lt;rolling-number&gt; is an easy-to-use inline Web Component**
+This easy-to-use web component shows a nice rolling digit animation.
 
 ![Rolling Number Screen Recording](rolling-number.gif)
 
-**See a DEMO here: https://layflags.github.io/rolling-number/**
+## Information
 
-This project makes use of the latest browser features ([Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components), [module scripts](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/--*), etc.) which are well supported in current versions of [Google Chrome](https://www.google.com/chrome/), [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/new/), [Apple Safari](https://www.apple.com/safari/) and [Microsoft Edge](https://www.microsoft.com/en-us/edge). If you need to target older browser versions or Microsoft Internet Explorer, you need to provide appropriate polyfills.
+- The &lt;rolling-number&gt; component can be used out-of-the-box with a monospaced font.
+- The webcomponent inherits the font-family from it's parent.
+- Depending on the font-family your letterspacing will vary
 
 ## Installation
 
@@ -18,37 +20,32 @@ Add the following to an HTML document:
 <script type="module" src="path/to/rolling-number.js"></script>
 ```
 
-### CDN
-
-Add the following to an HTML document:
-
+### NPM
 ```html
-<script
-  type="module"
-  src="https://unpkg.com/@layflags/rolling-number@1.0.0/rolling-number.js"
-></script>
+npm i hanspeleman/rolling-number
 ```
-
-### [NPM](https://www.npmjs.com/package/@layflags/rolling-number)
-
-Run `npm i @layflags/rolling-number`.
 
 ## Usage
 
+Value by fallback
 ```html
-<!-- value by fallback -->
-<layflags-rolling-number>123</layflags-rolling-number>
-
-<!-- value w/o fallback -->
-<layflags-rolling-number value="123"></layflags-rolling-number>
-
-<!-- customize roll duration -->
-<layflags-rolling-number
-  style="--roll-duration:750ms"
-  value="123"
-></layflags-rolling-number>
+<rolling-number>123</rolling-number>
+```
+Value w/o fallback
+```html
+<rolling-number value="123"></rolling-number>
+```
+Customize roll duration
+```html
+<rolling-number style="--roll-duration:750ms" value="123"></rolling-number>
 ```
 
-## License
+## Roadmap
 
-[MIT License](LICENSE)
+- [x] Fixed inline css typo
+- [x] Fixed inline css so other non-monospaced fonts are nicely aligned in each digits column
+- [x] Add an observer wich will initiate the animation only when it's in view
+- [ ] ...
+
+[![my github badge](https://img.shields.io/badge/hanspeleman-000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/hanspeleman) [![GitHub release](https://img.shields.io/github/release/hanspeleman/rolling-number?style=for-the-badge&include_prereleases=&sort=semver&color=black)](https://github.com/hanspeleman/rolling-number/releases/) [![License](https://img.shields.io/badge/License-MIT-black?style=for-the-badge)](#license)
+This repository is based on [@layflags/rolling-number](https://github.com/layflags/rolling-number).
