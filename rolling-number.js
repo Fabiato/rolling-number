@@ -1,12 +1,22 @@
 // HELPER
 
 function htmlEscape(string) {
-    return string
-        .replace(/&/g, "&amp;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#39;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
+    return string.replace(/[&"'<>]/g, match => {
+        switch (match) {
+            case "&":
+                return "&amp;";
+            case '"':
+                return "&quot;";
+            case "'":
+                return "&#39;";
+            case "<":
+                return "&lt;";
+            case ">":
+                return "&gt;";
+            default:
+                return match;
+        }
+    });
 }
 
 function html(strings, ...args) {
@@ -70,19 +80,19 @@ function renderStyles() {
                 left: 0;
                 right: 0;
             }
-            [data-value=" "] .scale { transform: translatey(10%); }
-            [data-value="0"] .scale { transform: translatey(0); }
-            [data-value="1"] .scale { transform: translatey(-10%); }
-            [data-value="2"] .scale { transform: translatey(-20%); }
-            [data-value="3"] .scale { transform: translatey(-30%); }
-            [data-value="4"] .scale { transform: translatey(-40%); }
-            [data-value="5"] .scale { transform: translatey(-50%); }
-            [data-value="6"] .scale { transform: translatey(-60%); }
-            [data-value="7"] .scale { transform: translatey(-70%); }
-            [data-value="8"] .scale { transform: translatey(-80%); }
-            [data-value="9"] .scale { transform: translatey(-90%); }
-            [data-value="-"] .scale { transform: translatey(-100%); }
-            [data-value=" "], [data-value="-"] { width: 0.9ch; }
+            .digit[data-value=" "] .scale { transform: translatey(10%); }
+            .digit[data-value="0"] .scale { transform: translatey(0); }
+            .digit[data-value="1"] .scale { transform: translatey(-10%); }
+            .digit[data-value="2"] .scale { transform: translatey(-20%); }
+            .digit[data-value="3"] .scale { transform: translatey(-30%); }
+            .digit[data-value="4"] .scale { transform: translatey(-40%); }
+            .digit[data-value="5"] .scale { transform: translatey(-50%); }
+            .digit[data-value="6"] .scale { transform: translatey(-60%); }
+            .digit[data-value="7"] .scale { transform: translatey(-70%); }
+            .digit[data-value="8"] .scale { transform: translatey(-80%); }
+            .digit[data-value="9"] .scale { transform: translatey(-90%); }
+            .digit[data-value="-"] .scale { transform: translatey(-100%); }
+            .digit[data-value=" "], [data-value="-"] { width: 0.9ch; }
         </style>
     `;
 }
@@ -117,12 +127,16 @@ function renderRoot() {
     `;
 }
 
+const renderCallback = ($wrapper, nextState, prevState, size) => {
+    render($wrapper, nextState, { ...prevState, size });
+};
+
 function render($wrapper, nextState, prevState) {
     const { value, size } = nextState;
     if (size > prevState.size) {
         $wrapper.innerHTML = toDigits(NaN, size).map(renderDigit).join("");
         setTimeout(() => {
-            render($wrapper, nextState, { ...prevState, size });
+            renderCallback($wrapper, nextState, prevState, size);
         }, 23);
     } else {
         toDigits(value, size).forEach((digit, index) => {
@@ -135,25 +149,19 @@ function render($wrapper, nextState, prevState) {
     }
 }
 
+const observerThreshold = {
+    enter: 0.5,
+    exit: 1
+}
+
 function observeElementInView(rollingNumberElement, onEnterCallback, onExitCallback) {
-    const observerThreshold = {
-        enter: 0.5,
-        exit: 1
-    }
-
-    if ( !onEnterCallback ) return;
-
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting && entry.intersectionRatio >= observerThreshold.enter) {
-                if (onEnterCallback) {
-                    onEnterCallback(entry.target);
-                }
+                onEnterCallback(entry.target);
             }
             if (!entry.isIntersecting && entry.intersectionRatio <= observerThreshold.exit && entry.intersectionRatio > 0) {
-                if (onExitCallback) {
-                    onExitCallback(entry.target);
-                }
+                onExitCallback(entry.target);
             }
         });
     }, {
