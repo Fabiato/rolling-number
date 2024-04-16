@@ -52,13 +52,11 @@ function renderStyles() {
                 --roll-duration: 1s;
             }
             .digit {
-                width: 1ch;
                 overflow: hidden;
                 display: inline-flex;
                 position: relative;
                 text-align: center;
                 justify-content: center;
-                transition: width 0.2s ease;
             }
             .value {
                 color: transparent;
@@ -67,7 +65,8 @@ function renderStyles() {
             .scale {
                 user-select: none;
                 position: absolute;
-                left: 0;
+                left: 50%;
+                right: 50%;
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
@@ -77,22 +76,19 @@ function renderStyles() {
             .scale span:last-child { /* the minus (-) */
                 position: absolute;
                 bottom: -10%;
-                left: 0;
-                right: 0;
             }
-            .digit[data-value=" "] .scale { transform: translatey(10%); }
-            .digit[data-value="0"] .scale { transform: translatey(0); }
-            .digit[data-value="1"] .scale { transform: translatey(-10%); }
-            .digit[data-value="2"] .scale { transform: translatey(-20%); }
-            .digit[data-value="3"] .scale { transform: translatey(-30%); }
-            .digit[data-value="4"] .scale { transform: translatey(-40%); }
-            .digit[data-value="5"] .scale { transform: translatey(-50%); }
-            .digit[data-value="6"] .scale { transform: translatey(-60%); }
-            .digit[data-value="7"] .scale { transform: translatey(-70%); }
-            .digit[data-value="8"] .scale { transform: translatey(-80%); }
-            .digit[data-value="9"] .scale { transform: translatey(-90%); }
-            .digit[data-value="-"] .scale { transform: translatey(-100%); }
-            .digit[data-value=" "], [data-value="-"] { width: 0.9ch; }
+            .digit[data-value=" "] .scale { transform: translateY(10%); }
+            .digit[data-value="0"] .scale { transform: translateY(0); }
+            .digit[data-value="1"] .scale { transform: translateY(-10%); }
+            .digit[data-value="2"] .scale { transform: translateY(-20%); }
+            .digit[data-value="3"] .scale { transform: translateY(-30%); }
+            .digit[data-value="4"] .scale { transform: translateY(-40%); }
+            .digit[data-value="5"] .scale { transform: translateY(-50%); }
+            .digit[data-value="6"] .scale { transform: translateY(-60%); }
+            .digit[data-value="7"] .scale { transform: translateY(-70%); }
+            .digit[data-value="8"] .scale { transform: translateY(-80%); }
+            .digit[data-value="9"] .scale { transform: translateY(-90%); }
+            .digit[data-value="-"] .scale { transform: translateY(-100%); }
         </style>
     `;
 }
@@ -198,7 +194,8 @@ class RollingNumber extends HTMLElement {
             }
         },
         resetValue() {
-            const state = { ...this.state, value: 0 };
+            const resetValue = Array.from({ length: this.state.size }).fill('0').join('');
+            const state = { ...this.state, value: resetValue };
             render(this.$wrapper, state, this.state);
             this.state = state;
         }
