@@ -146,7 +146,7 @@ function render($wrapper, nextState, prevState) {
 }
 
 const observerThreshold = {
-    enter: 0.5,
+    enter: 1,
     exit: 1
 }
 
