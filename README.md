@@ -22,7 +22,7 @@ Add the following to an HTML document:
 
 ### NPM
 ```html
-npm i @hanspeleman/rolling-number
+npm i @Fabiato/rolling-number
 ```
 
 ## Usage
