@@ -162,7 +162,7 @@ function observeElementInView(rollingNumberElement, onEnterCallback, onExitCallb
         });
     }, {
         root: null,
-        rootMargin: "0px",
+        rootMargin: "-150px 0px",
         threshold: [
             observerThreshold.exit,
             observerThreshold.enter
